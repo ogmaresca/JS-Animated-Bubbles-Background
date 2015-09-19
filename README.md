@@ -5,14 +5,17 @@ Javascript Animated Bubbles Background
 
 This is a JS script that creates a number of moving bubbles (1/45000 of the amount of pixels in the window) that mimics the animated wallapers introduced in iOS 7. The bubbles will reset if they leave the bounds of the window, and it'll change with window resizes, but the amount of bubbles won't change without refreshing the page.
 
+##Screenshots
+![Screenshot](https://raw.github.com/ggodone-maresca/JS-Animated-Bubbles-Background/master/screenshot.png)
+To see it in action, download this repository and open page.html in a web browser.
+
 ##How to add it to your own page
 First, add the Javascript file to your page, either by using movingbubbles.js or adding it directly into the page. Then in the HTML add
 <pre><code>onload="instantiate();"</code></pre>
 as an attribute of the body element. Then add
 <pre><code>&lt;div id="bubbleContainer"&gt;&lt;/div&gt;</code></pre>
 at the bottom of the body element. For CSS, the following CSS is added to ensure that the background covers the entire page, and that the bubbles don't cover other elements:
-<pre><code>
-	html, body {
+<pre><code>	html, body {
 		padding:0;
 		margin:0;
 		min-height:100%;
@@ -24,8 +27,7 @@ at the bottom of the body element. For CSS, the following CSS is added to ensure
 </code></pre>
 This CSS code also includes a CSS gradient background that matches the bubble colors.
 And this CSS makes the bubbles cover the entire background and that the bubbles are round:
-<pre><code>
-	#bubbleContainer {
+<pre><code>	#bubbleContainer {
 		z-index:0;
 		overflow:hidden;
 		position:fixed;
