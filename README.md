@@ -7,9 +7,9 @@ This is a JS script that creates a number of moving bubbles (1/45000 of the amou
 
 ##How to add it to your own page
 First, add the Javascript file to your page, either by using movingbubbles.js or adding it directly into the page. Then in the HTML add
-<pre><code>onload="instantiate();"</pre><code>
+<pre><code>onload="instantiate();"</code></pre>
 as an attribute of the body element. Then add
-<pre><code><div id="bubbleContainer"></div></pre></code>
+<pre><code><div id="bubbleContainer"></div></code></pre>
 at the bottom of the body element. For CSS, the following CSS is added to ensure that the background covers the entire page, and that the bubbles don't cover other elements:
 <pre><code>
 	html, body {
@@ -21,10 +21,10 @@ at the bottom of the body element. For CSS, the following CSS is added to ensure
 		background-attachment:fixed;
 	}
 	html * { z-index: 1; position:relative; }
-</pre></code>
+</code></pre>
 This CSS code also includes a CSS gradient background that matches the bubble colors.
 And this CSS makes the bubbles cover the entire background and that the bubbles are round:
-<pre></code>
+<pre><code>
 	#bubbleContainer {
 		z-index:0;
 		overflow:hidden;
@@ -37,7 +37,7 @@ And this CSS makes the bubbles cover the entire background and that the bubbles 
 		z-index:-1;
 		border-radius:1000px;
 	}
-<pre></code>
+</code></pre>
 
 ##Supports
 Any browser that supports opacity (for fade-in of bubbles), HSLA colors (for bubble backgrounds), border-radius (for round bubbles), and box shadow (for the bubble glow) should be able to properly see this, so any modern browser and IE9+.
