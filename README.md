@@ -9,7 +9,7 @@ This is a JS script that creates a number of moving bubbles (1/45000 of the amou
 First, add the Javascript file to your page, either by using movingbubbles.js or adding it directly into the page. Then in the HTML add
 <pre><code>onload="instantiate();"</code></pre>
 as an attribute of the body element. Then add
-<pre><code><div id="bubbleContainer"></div></code></pre>
+<pre><code>&lt;div id="bubbleContainer"&gt;&lt;/div&gt;</code></pre>
 at the bottom of the body element. For CSS, the following CSS is added to ensure that the background covers the entire page, and that the bubbles don't cover other elements:
 <pre><code>
 	html, body {
