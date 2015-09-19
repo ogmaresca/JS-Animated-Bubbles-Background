@@ -1,6 +1,4 @@
-# JS-Animated-Bubbles-Background
-
-Javascript Animated Bubbles Background
+# Javascript Animated Bubbles Background
 ==================
 
 This is a JS script that creates a number of moving bubbles (1/45000 of the amount of pixels in the window) that mimics the animated wallapers introduced in iOS 7. The bubbles will reset if they leave the bounds of the window, and it'll change with window resizes, but the amount of bubbles won't change without refreshing the page.
