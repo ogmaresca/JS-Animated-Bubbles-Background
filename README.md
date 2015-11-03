@@ -3,7 +3,7 @@ This is a JS script that creates a number of moving bubbles (1/45000 of the amou
 
 ##Screenshots
 ![Screenshot](https://raw.github.com/ggodone-maresca/JS-Animated-Bubbles-Background/master/screenshot.png)
-To see it in action, [click here](https://b5e08cbe644529bdd9db0e7d2807c369d493b676.googledrive.com/secure/AB5fxWBxl7r6ycyaNmPcmy2TI4fYUgwIAAfok0PtvU7WflPnb-Txz0TY4yrvVNzyM7Lm_weg3r50kcKICBkLsWWTuUiv5IiBVfv4jTQIIeV3wREVQPAOoTW1j27bROqdvrfaxtt7vl4Ve5UOZ8M51-aOGGWwswkH91WMLHkvm_zB5JeR4LuHnKxOv0OosvGCJybUSP3KTBp_LBUdb1Ar_47U-WyUa0UbHuZPn0EFKaLvDICumvHjjycrU-0YCSWQBg9oIe019AWfACQZ0BiGQphRD3j8AP6OVlQ3HBaxxqAu_AFlBbSXbDAjYZrEud9NrHI7JDOmmd_iJgMr4DQetTAS_hqEFMfIZK3E2_nTjb4vSNUjo4SKpvnyNL4vaUxg_LZX-9hksq4wnb_9Xd2pt-JYw6eMTjEk78reYAHfsk10j7NV50fOXX_SW8myBU264MDHY4ahG9b7vfR-n6O0jZOeKLymkhKkwuXnU_XsN9T3Ut7fpXYszXt2nCiVtNvmKJBjwqWjD1ju4X_2dSYPv9oWpulGa6hmMutXXbZ7AHmH8Mb8k6kRVRjEz2L1O4k7Qo04R31-CvAI/host/0B_U9kZs_GIcWOUtteTAyYmVhZ0k/) or download this repository and open page.html in a web browser.
+To see it in action, download this repository and open page.html in a web browser.
 
 ##How to add it to your own page
 First, add the Javascript file to your page, either by using movingbubbles.js or adding it directly into the page. Then in the HTML add
