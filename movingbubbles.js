@@ -20,6 +20,9 @@ var bubbleOptions = {
 	minOpacity     : 0.1,   //The minimum opacity
 	ratio          : 45000, //The bubble:pixel ratio
 	update		   : function(tick) { //Function to change the tick timer
+		//Since IE8 and below don't support HSLA colors,
+		//do nothing for these browsers
+		if(!document.addEventListener) return;
 		window.clearInterval(this.timer);
 		if(!tick) tick = this.tick;
 		if(!this.bubbles.length) this.bubbles = instantiateBubbles();
@@ -57,7 +60,7 @@ function instantiateBubbles() {
 	}
 	//Create the bubbles
 	var bubbles = [];
-	//The number of bubbles is set to a ratio of 1 bubble to every 45,000 pixels
+	//The default number of bubbles is set to a ratio of 1 bubble to every 45,000 pixels (bubbleOptions.ratio)
 	var bubbleLength = Math.floor(window.innerWidth*window.innerHeight/bubbleOptions.ratio);
 	for(var i = 0; i < bubbleLength; i++) {
 		var bubbleElem = document.createElement('div');
@@ -84,8 +87,8 @@ function Bubble(element) {
 	this.y = 0;			// Y position
 	this.xVel = 0;		// Velocity in the X direction
 	this.yVel = 0;		// Velocity in the Y direction
-	this.time = 0;		// The amount of ticks that has occured since being created
-	this.e = element;	// Storing element
+	this.time = 0;		// The amount of ticks that has occured since the Bubble was created
+	this.e = element;	// Store the element
 	this.diam = 0;		// The size of the bubble
 	
 	//Set up the element
@@ -141,8 +144,8 @@ Bubble.prototype.create = function() {
 }
 
 /**
- * move() moves the bubble based on velocity
- * If it has been 10 or less ticks it increments opacity
+ * move() moves the bubble based on its velocity
+ * If it has been fewer than 10 ticks it needs to increase its opacity to 1
  * If the bubble has moved out of bounds it recreates the bubble
  * @this {Bubble}
  */
