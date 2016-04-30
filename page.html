@@ -2,33 +2,140 @@
 <html><head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Animated Bubbles</title>
+		<link rel="stylesheet" href="movingbubbles.css" type="text/css" />
 		<style>
-			html, body {
-				padding:0;
+			/* Start slider CSS */
+			#sliderContainer {
+				position:absolute;
+				top:20px;
+				right:20px;
+				background-color:#fff;
+				background-image:linear-gradient(to bottom, #fff, #eee);
+				border-radius:5px;
+				padding:10px;
+				box-shadow:0 5px 5px rgba(0, 0, 0, .2);
+				text-shadow:0 1px #fff;
+				opacity:0.2;
+				transition:opacity linear 0.25s;
+				font-family:Arial, sans-serif;
+			}
+			#sliderContainer:hover {
+				opacity:1;
+			}
+			#sliderContainer h3 {
 				margin:0;
-				min-height:100%;
-				background-color:#50afe4;
-				background-image:linear-gradient(to bottom,#57B7E0,#3C799D);
-				background-attachment:fixed;
+				text-align:center;
 			}
-			html * { z-index: 1; position:relative; }
-			#bubbleContainer {
-				z-index:0;
-				overflow:hidden;
-				position:fixed;
-				height:100%;
-				width:100%;
+			#sliderContainer strong {
+				width:115px;
+				display:inline-block;
 			}
-			#bubbleContainer div {
-				position:fixed;
-				z-index:-1;
-				border-radius:1000px;
+			#sliderContainer input {
+				width:200px;
+				margin:0;
 			}
+			#sliderContainer span {
+				padding:5px 0;
+				width:5%;
+			}
+			#sliderContainer hr {
+				background:#999;
+				box-shadow:0 1px #fff;
+				border:0;
+				height:1px;
+			}
+			/* End slider CSS */
 		</style>
         <script src="movingbubbles.js" type="text/javascript"></script>
+        <script type="text/javascript">
+        	/**
+        	 * A function for the settings sliders to properly update bubbleOptions
+        	 * @this {Window}
+        	 * @param {[object HTMLInputElement]} slider The slider element
+        	 * @param {String} bubbleSetting The variable name of bubbleOptions that the slider modifies
+        	 */
+        	function sliderUpdate(slider, bubbleSetting) {
+        		//Special case, the bubble-pixel ratio requires changing the number of bubbles
+        		if(bubbleSetting == 'ratio') {
+        			var bubbleContainer = document.getElementById('bubbleContainer');
+        			if(bubbleContainer) {
+        				document.body.removeChild(bubbleContainer);
+        				bubbleOptions.bubbles = [];
+        			}
+        		}
+        		value = parseFloat(slider.value);
+        		slider.title = value + " - bubbleOptions."+bubbleSetting;
+        		bubbleOptions[bubbleSetting] = value;
+        		//Turn the ratio slider into an inverse 100-20 scale
+        		if(bubbleSetting == 'ratio') {
+        			slider.title = "Pixel to Bubble Ratio: 1:"+value+" - bubbleOptions.ratio";
+        			value = (120000 - value) / 1000;
+        		}
+        		document.getElementById(bubbleSetting + "Slider").innerHTML = value;
+        		bubbleOptions.update();
+        	}
+        </script>
 	</head>
 
-	<body onload="instantiate();">
-		<div id="bubbleContainer"></div>
+	<body>
+		<div id="sliderContainer">
+			<h3>Edit Bubble Settings</h3>
+			<hr />
+			<div class="sliderLabel">
+				<strong>Hue:</strong>
+				<input type="range" min="0" max="360" value="188" onchange="sliderUpdate(this, 'hue');" autocomplete="off"/>
+				<span id="hueSlider">188</span>
+			</div>
+			<div class="sliderLabel">
+				<strong>Variance:</strong>
+				<input type="range" min="0" max="360" value="20" onchange="sliderUpdate(this, 'hueRand');" autocomplete="off"/>
+				<span id="hueRandSlider">20</span>
+			</div>
+			<hr />
+			<div class="sliderLabel">
+				<strong>Saturation:</strong>
+				<input type="range" min="0" max="100" value="63" onchange="sliderUpdate(this, 'saturation');" autocomplete="off"/>
+				<span id="saturationSlider">63</span>
+			</div>
+			<div class="sliderLabel">
+				<strong>Variance:</strong>
+				<input type="range" min="0" max="100" value="10" onchange="sliderUpdate(this, 'saturationRand');" autocomplete="off"/>
+				<span id="saturationRandSlider">10</span>
+			</div>
+			<hr />
+			<div class="sliderLabel">
+				<strong>Brightness:</strong>
+				<input type="range" min="0" max="100" value="57" onchange="sliderUpdate(this, 'light');" autocomplete="off"/>
+				<span id="lightSlider">57</span>
+			</div>
+			<div class="sliderLabel">
+				<strong>Variance:</strong>
+				<input type="range" min="0" max="100" value="10" onchange="sliderUpdate(this, 'lightRand');" autocomplete="off"/>
+				<span id="lightRandSlider">10</span>
+			</div>
+			<hr />
+			<div class="sliderLabel">
+				<strong>Opacity:</strong>
+				<input type="range" min="1" max="10" value="3" onchange="sliderUpdate(this, 'opacityFactor');" autocomplete="off"/>
+				<span id="opacityFactorSlider">3</span>
+			</div>
+			<div class="sliderLabel">
+				<strong>Min Opacity:</strong>
+				<input type="range" min="0" max="1" value="0.1" step="0.1" onchange="sliderUpdate(this, 'minOpacity');" autocomplete="off"/>
+				<span id="minOpacitySlider">0.1</span>
+			</div>
+			<hr />
+			<div class="sliderLabel">
+				<strong>Tick (ms):</strong>
+				<input type="range" min="10" max="1000" value="100" onchange="sliderUpdate(this, 'tick');" autocomplete="off"/>
+				<span id="tickSlider">100</span>
+			</div>
+			<hr />
+			<div class="sliderLabel">
+				<strong>Density:</strong>
+				<input type="range" min="20000" max="100000" value="45000" step="1000" onchange="sliderUpdate(this, 'ratio');" autocomplete="off"/>
+				<span id="ratioSlider">75</span>
+			</div>
+		</div>
 	</body>
 </html>
