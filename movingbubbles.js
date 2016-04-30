@@ -7,6 +7,7 @@
  * An object that stores different settings for the bubbles
  */
 var bubbleOptions = {
+	maxBubbles     : 250,   //A bubble ceiling, for high resolution monitors
 	timer          : -1,    //The interval time
 	tick           : 100,   //The tick speed
 	bubbles        : [],    //The array of bubbles

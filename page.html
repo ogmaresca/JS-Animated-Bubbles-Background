@@ -55,15 +55,19 @@
         	 * @param {String} bubbleSetting The variable name of bubbleOptions that the slider modifies
         	 */
         	function sliderUpdate(slider, bubbleSetting) {
-        		//Special case, the bubble-pixel ratio requires changing the number of bubbles
-        		if(bubbleSetting == 'ratio') {
+        		var value = parseFloat(slider.value);
+        		//Special cases
+        		//The bubble-pixel ratio requires changing the number of bubbles
+        		//And if the bubble cap is lower than the number of bubbles,
+        		//then the bubbles also need to be changed
+        		if(bubbleSetting == 'ratio' ||
+        		   (bubbleSetting == 'maxBubbles' && bubbleOptions.bubbles.length > value)) {
         			var bubbleContainer = document.getElementById('bubbleContainer');
         			if(bubbleContainer) {
         				document.body.removeChild(bubbleContainer);
         				bubbleOptions.bubbles = [];
         			}
         		}
-        		value = parseFloat(slider.value);
         		slider.title = value + " - bubbleOptions."+bubbleSetting;
         		bubbleOptions[bubbleSetting] = value;
         		//Turn the ratio slider into an inverse 100-20 scale
@@ -135,6 +139,11 @@
 				<strong>Density:</strong>
 				<input type="range" min="20000" max="100000" value="45000" step="1000" onchange="sliderUpdate(this, 'ratio');" autocomplete="off"/>
 				<span id="ratioSlider">75</span>
+			</div>
+			<div class="sliderLabel">
+				<strong>Bubble Cap:</strong>
+				<input type="range" min="0" max="500" value="250" onchange="sliderUpdate(this, 'maxBubbles');" autocomplete="off"/>
+				<span id="maxBubblesSlider">250</span>
 			</div>
 		</div>
 	</body>
